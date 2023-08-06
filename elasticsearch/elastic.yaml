@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elastic
+  namespace: default
+
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/norelnorel3/testing.git'
+    path: elasticsearch
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-copy.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy: 
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions: 
+    - CreateNamespace=true  
