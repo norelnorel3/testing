@@ -1,6 +1,6 @@
 
 kibana:
-  enabled: false
+  enabled: true
   syncWave: "6"
   syncPolicy:
     enable: true
@@ -11,7 +11,7 @@ kibana:
       enable: false
 
 jaeger:
-  enabled: false
+  enabled: true
   syncWave: "5"
   syncPolicy:
     enable: true
