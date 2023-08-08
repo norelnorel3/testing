@@ -1,0 +1,55 @@
+
+kibana:
+  enabled: false
+  syncWave: "6"
+  syncPolicy:
+    enable: true
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+      enable: false
+
+jaeger:
+  enabled: false
+  syncWave: "5"
+  syncPolicy:
+    enable: true
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+    enable: true
+    options:
+      - CreateNamespace=true
+
+kubePrometheusStack:
+  enabled: true
+  syncWave: "5"
+  syncPolicy:
+    enable: true
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+    enable: true
+    options:
+      - ServerSideApply=true
+
+
+elasticsearch:
+  enabled: true
+  syncWave: "3"
+  syncPolicy:
+    enable: true
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+    enable: true
+    options:
+      - CreateNamespace=true
+
+
+
+  

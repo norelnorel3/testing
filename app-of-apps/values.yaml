@@ -1,0 +1,28 @@
+
+
+grafana:
+  enabled: false
+  syncWave: "3"
+  syncPolicy:
+    enabled: false
+kafdrop:
+  enabled: false
+  syncWave: "2"
+  syncPolicy:
+    enabled: false
+
+mongoExpress:
+  enabled: false
+  syncWave: "4"
+  syncPolicy:
+    enabled: false
+mongodbSharded:
+  enabled: false
+  syncWave: "1"
+  syncPolicy:
+    enabled: false
+nfs:
+  enabled: true
+  syncPolicy:
+    enabled: false
+  syncWave: "0"

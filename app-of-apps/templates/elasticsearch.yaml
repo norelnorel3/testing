@@ -1,0 +1,36 @@
+{{- if .Values.kafdrop.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+  namespace: default
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ .Values.elasticsearch.syncWave }}"
+
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/norelnorel3/testing.git'
+    path: elasticsearch
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-copy.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  {{- if .Values.elasticsearch.syncPolicy.enable }}
+  syncPolicy:
+    automated:
+      prune: {{ .Values.elasticsearch.syncPolicy.automated.prune }}
+      selfHeal: {{ .Values.elasticsearch.syncPolicy.automated.selfHeal }}
+  {{- end }}
+    {{- if .Values.elasticsearch.syncOptions.enable }}
+    syncOptions:
+      {{- range .Values.elasticsearch.syncOptions.options }}
+      - {{ . }}
+      {{- end }}
+    {{- end }}
+{{- end }}
